@@ -13,8 +13,8 @@ const Sidebar = () => {
             icon: BsHouseFill,
         },
         {
-            label: 'CRUD TABLE',
-            href: '/notifications',
+            label: 'Users',
+            href: '/users',
             icon: BsBellFill
         },
         {
