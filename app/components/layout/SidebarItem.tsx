@@ -1,3 +1,6 @@
+import useLoginModal from "@/app/hooks/useLoginModal";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 import { IconType } from "react-icons";
 
 interface SidebarItemProps {
@@ -8,14 +11,25 @@ interface SidebarItemProps {
 }
 
 
-const SidebarItem: React.FC<SidebarItemProps> = ({label, href, icon: Icon, onClick}) => {
+const SidebarItem: React.FC<SidebarItemProps> = ({label, href, icon: Icon,}) => {
+
+    const router = useRouter();
+    const loginModal = useLoginModal();
+
+    const onClick = () => {
+        router.push(`http://localhost:3000//${href}`);
+    };
+    
+
+
+
     return (
 
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center" onClick = {onClick}>
             <div 
                 className="
                     relative 
-                    roudned-full 
+                    rounded-full 
                     h-14 
                     w-14 
                     flex 
@@ -28,8 +42,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({label, href, icon: Icon, onCli
                     lg:hidden
                 "
             >
-                <Icon
-                    /* onClick={} */
+                <Icon 
                     size={28} color="white" 
                 />
             </div> 
